@@ -12,9 +12,11 @@ const Board = ({
       <h6>{ `${title} (${cardsData.length || '0'})` }</h6>
       <div>
         {
-          cardsData.length && cardsData.map(
+          cardsData.length ?
+          cardsData.map(
             data => <Card taskTitle={data.taskTitle} boardName={title}/>
-          )
+          ):
+          <h4>No Card</h4>
         }
       </div>
     </div>

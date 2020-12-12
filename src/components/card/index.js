@@ -1,19 +1,8 @@
 import React from 'react';
 
-const SELECT_OPTIONS = [
-  {
-    value: 'TO DO',
-    title: 'Move to Todo',
-  },
-  {
-    value: 'IN PROGRESS',
-    title: 'Move to In Progress',
-  },
-  {
-    value: 'COMPLETE',
-    title: 'Move to Complete',
-  }
-]
+import {
+  BOARD_TYPES,
+} from 'utils';
 
 const Card = ({
   taskTitle,
@@ -31,7 +20,9 @@ const Card = ({
     </div>
     <select name="Change Status">
       {
-        SELECT_OPTIONS.filter(option => option.value !== boardName).map(
+        BOARD_TYPES.filter(
+          option => option.value !== boardName
+        ).map(
           option => <option value={option.value}>{option.title}</option>
         )
       }
