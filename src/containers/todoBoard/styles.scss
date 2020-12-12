@@ -1,27 +1,47 @@
 .todo-board {
-
-  .header {
-    margin: 10px 5px;
+  & > .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 
-    input {
-      width: 290px;
+    @media screen and (min-width: 600px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      input {
+        width: 300px;
+      }
+    }
+
+    & > span {
+      font-size: 2rem;
+      font-weight: 900;
+      background-color: #ffebcddb;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      margin-block: 5px;
     }
   }
 
   .task-wrapper {
     margin-left: auto;
-    width: 300px;
+    background-color: #ffebcddb;
+
+    @media screen and (min-width: 600px) {
+      width: 300px;
+    }
 
     .add-task {
       display: grid;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
-      border: solid #efefef;
+      grid-template-rows: repeat(4, 1fr);
       border-radius: 5px;
       padding-inline: 10px;
       margin-block: 10px;
+
+      select {
+        text-align-last: center;
+      }
 
       h3 {
         text-align: right;

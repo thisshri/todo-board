@@ -109,7 +109,7 @@ const TodoBoard = () => {
   return (
     <div className="todo-board">
       <div className="header">
-        <h1>Todo Board</h1>
+        <span>Todo Board</span>
         <input type="text" id="myInput" values={searchKey} onKeyUp={handleSearch} placeholder="Search"/>
       </div>
 
