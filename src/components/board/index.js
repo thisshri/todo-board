@@ -14,7 +14,7 @@ const Board = ({
         {
           cardsData.length ?
           cardsData.map(
-            data => <Card taskTitle={data.taskTitle} boardName={title}/>
+            data => <Card key={data.pk} taskTitle={data.taskTitle} boardName={title}/>
           ):
           <h4>No Card</h4>
         }
