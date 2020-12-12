@@ -1,0 +1,45 @@
+body {
+  background-image: url('https://cms-assets.tutsplus.com/uploads/users/127/posts/31341/final_image/1_10.png');
+}
+
+#root {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, select {
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 15px;
+}
+
+button {
+  border: none;
+  border-radius: 3px;
+}
+
+@media (min-width: 576px) {
+  #root {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 768px) {
+  #root {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 992px) {
+  #root {
+    width: 85vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  #root {
+    width: 80vw;
+  }
+}

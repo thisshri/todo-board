@@ -1,4 +1,5 @@
 import TodoBoard from './containers/todoBoard';
+import './App.scss';
 
 function App() {
   return (
