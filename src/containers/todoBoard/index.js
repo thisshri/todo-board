@@ -73,12 +73,27 @@ const TodoBoard = () => {
         ...DATA,
       ]);
      }
-   }, [taskName, DATA]
+   }, [taskName, DATA, pk]
   )
 
   const onDeleteCard = useCallback(
     (cardId) => {
       setDATA(DATA.filter(d => d.pk !== cardId))
+    }, [DATA]
+  )
+
+  const onSelectMoveCard = useCallback(
+    (event) => {
+      const { cardPk } = event.target.dataset;
+      const moveToBoard = event.target.value;
+
+      if (moveToBoard) {
+        const index = DATA.findIndex(d => d.pk === parseInt(cardPk))
+        DATA[index].boardName = moveToBoard;
+        setDATA([
+        ...DATA
+        ]);
+      }
     }, [DATA]
   )
 
@@ -108,16 +123,19 @@ const TodoBoard = () => {
           title={BOARD_TYPE.TODO}
           cardsData={getData(BOARD_TYPE.TODO)}
           onDeleteCard={onDeleteCard}
+          onSelectMoveCard={onSelectMoveCard}
         />
         <Board
           title={BOARD_TYPE.IN_PROGRESS}
           cardsData={getData(BOARD_TYPE.IN_PROGRESS)}
           onDeleteCard={onDeleteCard}
+          onSelectMoveCard={onSelectMoveCard}
         />
         <Board
           title={BOARD_TYPE.COMPLETE}
           cardsData={getData(BOARD_TYPE.COMPLETE)}
           onDeleteCard={onDeleteCard}
+          onSelectMoveCard={onSelectMoveCard}
         />
       </div>
     </div>

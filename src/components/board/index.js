@@ -7,6 +7,7 @@ const Board = ({
   title,
   cardsData,
   onDeleteCard,
+  onSelectMoveCard,
 }) => {
   return (
     <div className="board">
@@ -28,6 +29,7 @@ const Board = ({
                 taskTitle={data.taskTitle}
                 boardName={title}
                 onDeleteCard={onDeleteCard}
+                onSelectMoveCard={onSelectMoveCard}
               />
             )
           ):

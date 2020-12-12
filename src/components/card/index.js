@@ -11,6 +11,7 @@ const Card = ({
   boardName,
   onDeleteCard,
   pk,
+  onSelectMoveCard,
 }) => {
   return (
     <div className="card">
@@ -22,7 +23,7 @@ const Card = ({
           Delete
         </button>
       </div>
-      <select name="Change Status">
+      <select data-card-pk={pk} name="Change Status" onChange={onSelectMoveCard}>
         <option value="">Move to board</option>
         {
           BOARD_TYPES.filter(
