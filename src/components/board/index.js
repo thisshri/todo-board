@@ -6,6 +6,7 @@ import './styles.scss';
 const Board = ({
   title,
   cardsData,
+  onDeleteCard,
 }) => {
   return (
     <div className="board">
@@ -19,7 +20,16 @@ const Board = ({
         {
           cardsData.length ?
           cardsData.map(
-            data => <Card className="card" key={data.pk} taskTitle={data.taskTitle} boardName={title}/>
+            data => (
+              <Card
+                className="card"
+                key={data.pk}
+                pk={data.pk}
+                taskTitle={data.taskTitle}
+                boardName={title}
+                onDeleteCard={onDeleteCard}
+              />
+            )
           ):
           <h4>No Card</h4>
         }

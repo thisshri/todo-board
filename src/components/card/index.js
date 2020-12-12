@@ -9,6 +9,8 @@ import './styles.scss';
 const Card = ({
   taskTitle,
   boardName,
+  onDeleteCard,
+  pk,
 }) => {
   return (
     <div className="card">
@@ -16,7 +18,7 @@ const Card = ({
         <span>
           {taskTitle}
         </span>
-        <button>
+        <button onClick={() => onDeleteCard(pk)}>
           Delete
         </button>
       </div>

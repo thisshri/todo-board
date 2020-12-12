@@ -76,6 +76,12 @@ const TodoBoard = () => {
    }, [taskName, DATA]
   )
 
+  const onDeleteCard = useCallback(
+    (cardId) => {
+      setDATA(DATA.filter(d => d.pk !== cardId))
+    }, [DATA]
+  )
+
   return (
     <div className="todo-board">
       <div className="header">
@@ -101,14 +107,17 @@ const TodoBoard = () => {
         <Board
           title={BOARD_TYPE.TODO}
           cardsData={getData(BOARD_TYPE.TODO)}
+          onDeleteCard={onDeleteCard}
         />
         <Board
           title={BOARD_TYPE.IN_PROGRESS}
           cardsData={getData(BOARD_TYPE.IN_PROGRESS)}
+          onDeleteCard={onDeleteCard}
         />
         <Board
           title={BOARD_TYPE.COMPLETE}
           cardsData={getData(BOARD_TYPE.COMPLETE)}
+          onDeleteCard={onDeleteCard}
         />
       </div>
     </div>
