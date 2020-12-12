@@ -12,6 +12,7 @@ const TodoBoard = () => {
   const taskType = useRef();
   const [taskName, setTaskName] = useState('');
   const [pk, setPk] = useState(0);
+  const [searchKey, setSearchKey] = useState('');
 
   const [DATA, setDATA] = useState(
     [
@@ -27,7 +28,7 @@ const TodoBoard = () => {
 
   const getData = useCallback(
     (boardName) => {
-      if (filteredData.length) {
+      if (searchKey) {
         return filteredData.filter(
           data => data.boardName === boardName
         );
@@ -35,11 +36,12 @@ const TodoBoard = () => {
       return DATA.filter(
         data => data.boardName === boardName
       );
-    }, [DATA, filteredData]
+    }, [DATA, filteredData, searchKey]
   )
 
   const handleSearch = useCallback(
    (event) => {
+    setSearchKey(event.target.value);
     setFilteredData(
       DATA.filter(
         d => d.taskTitle.toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase())
@@ -73,29 +75,29 @@ const TodoBoard = () => {
      }
    }, [taskName, DATA]
   )
-  console.log(
-    DATA
-  )
+
   return (
     <div className="todo-board">
-      <h1>Todo Board</h1>
-      <input type="text" id="myInput" onKeyUp={handleSearch} placeholder="Search"/>
+      <div className="header">
+        <h1>Todo Board</h1>
+        <input type="text" id="myInput" values={searchKey} onKeyUp={handleSearch} placeholder="Search"/>
+      </div>
 
       <p>Add task</p>
-      <input type="text" value={taskName} onChange={handleTaskName} placeholder="Task Name"/>
-
-      <select name="Change Status" ref={taskType}>
-        {
-          BOARD_TYPES.map(
-            (option, index) => <option key={index} value={option.value}>{option.title}</option>
-          )
-        }
-      </select>
-      <button onClick={handleAddTask}>
-        ADD
-      </button>
-
-      <div>
+      <div className="add-task">
+        <input type="text" value={taskName} onChange={handleTaskName} placeholder="Task Name"/>
+        <select name="Change Status" ref={taskType}>
+          {
+            BOARD_TYPES.map(
+              (option, index) => <option key={index} value={option.value}>{option.title}</option>
+            )
+          }
+        </select>
+        <button onClick={handleAddTask}>
+          ADD
+        </button>
+      </div>
+      <div className="boards">
         <Board
           title={BOARD_TYPE.TODO}
           cardsData={getData(BOARD_TYPE.TODO)}
