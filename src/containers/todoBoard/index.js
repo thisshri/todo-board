@@ -8,20 +8,17 @@ import {
 
 import './styles.scss';
 
+const persistantData = JSON.parse(localStorage.getItem('todos')) || [];
+
 const TodoBoard = () => {
   const taskType = useRef();
   const [taskName, setTaskName] = useState('');
   const [pk, setPk] = useState(0);
   const [searchKey, setSearchKey] = useState('');
 
+
   const [DATA, setDATA] = useState(
-    [
-      {
-        pk: -1,
-        taskTitle: 'Finish this assignment',
-        boardName: BOARD_TYPE.TODO,
-      },
-    ]
+    persistantData
   );
 
   const [filteredData, setFilteredData] = useState([]);
@@ -57,6 +54,15 @@ const TodoBoard = () => {
    }, [taskName]
   )
 
+  const setPersistData = useCallback(
+    (data) => {
+      localStorage.setItem('todos', JSON.stringify(data));
+      setDATA([
+        ...data
+      ]);
+    },[]
+  )
+
   const handleAddTask = useCallback(
    () => {
      if (taskName) {
@@ -69,16 +75,14 @@ const TodoBoard = () => {
 
       setTaskName('');
       DATA.push(newTask)
-      setDATA([
-        ...DATA,
-      ]);
+      setPersistData(DATA);
      }
    }, [taskName, DATA, pk]
   )
 
   const onDeleteCard = useCallback(
     (cardId) => {
-      setDATA(DATA.filter(d => d.pk !== cardId))
+      setPersistData(DATA.filter(d => d.pk !== cardId))
     }, [DATA]
   )
 
@@ -90,9 +94,7 @@ const TodoBoard = () => {
       if (moveToBoard) {
         const index = DATA.findIndex(d => d.pk === parseInt(cardPk))
         DATA[index].boardName = moveToBoard;
-        setDATA([
-        ...DATA
-        ]);
+        setPersistData(DATA);
       }
     }, [DATA]
   )
