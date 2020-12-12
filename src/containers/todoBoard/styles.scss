@@ -1,12 +1,39 @@
 .todo-board {
-  background-color: red;
 
   .header {
     margin: 10px 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    input {
+      width: 290px;
+    }
   }
+
+  .task-wrapper {
+    margin-left: auto;
+    width: 300px;
+
+    .add-task {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      border: solid #efefef;
+      border-radius: 5px;
+      padding-inline: 10px;
+      margin-block: 10px;
+
+      h3 {
+        text-align: right;
+      }
+
+      button {
+        height: 30px;
+        text-align: center;
+      }
+    }
+  }
+
 
   .boards {
     display: grid;

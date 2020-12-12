@@ -104,19 +104,21 @@ const TodoBoard = () => {
         <input type="text" id="myInput" values={searchKey} onKeyUp={handleSearch} placeholder="Search"/>
       </div>
 
-      <p>Add task</p>
-      <div className="add-task">
-        <input type="text" value={taskName} onChange={handleTaskName} placeholder="Task Name"/>
-        <select name="Change Status" ref={taskType}>
-          {
-            BOARD_TYPES.map(
-              (option, index) => <option key={index} value={option.value}>{option.title}</option>
-            )
-          }
-        </select>
-        <button onClick={handleAddTask}>
-          ADD
-        </button>
+      <div className="task-wrapper">
+        <div className="add-task">
+          <h3>Add task</h3>
+          <input type="text" value={taskName} onChange={handleTaskName} placeholder="Task Name"/>
+          <select name="Change Status" ref={taskType}>
+            {
+              BOARD_TYPES.map(
+                (option, index) => <option key={index} value={option.value}>{option.title}</option>
+              )
+            }
+          </select>
+          <button onClick={handleAddTask}>
+            ADD
+          </button>
+        </div>
       </div>
       <div className="boards">
         <Board
