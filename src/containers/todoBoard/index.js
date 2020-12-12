@@ -50,8 +50,7 @@ const TodoBoard = () => {
   const handleTaskName = useCallback(
    (event) => {
      setTaskName(event.target.value)
-     console.log(taskName);
-   }, [taskName]
+   }, []
   )
 
   const setPersistData = useCallback(
@@ -77,13 +76,13 @@ const TodoBoard = () => {
       DATA.push(newTask)
       setPersistData(DATA);
      }
-   }, [taskName, DATA, pk]
+   }, [taskName, DATA, pk, setPersistData]
   )
 
   const onDeleteCard = useCallback(
     (cardId) => {
       setPersistData(DATA.filter(d => d.pk !== cardId))
-    }, [DATA]
+    }, [setPersistData, DATA]
   )
 
   const onSelectMoveCard = useCallback(
@@ -96,7 +95,15 @@ const TodoBoard = () => {
         DATA[index].boardName = moveToBoard;
         setPersistData(DATA);
       }
-    }, [DATA]
+    }, [DATA, setPersistData]
+  )
+
+  const onEnterTaskName = useCallback(
+    (event) => {
+      if (event.keyCode === 13) {
+        handleAddTask();
+      }
+    }, [handleAddTask]
   )
 
   return (
@@ -109,7 +116,7 @@ const TodoBoard = () => {
       <div className="task-wrapper">
         <div className="add-task">
           <h3>Add task</h3>
-          <input type="text" value={taskName} onChange={handleTaskName} placeholder="Task Name"/>
+          <input type="text" value={taskName} onChange={handleTaskName} onKeyUp={onEnterTaskName} placeholder="Task Name"/>
           <select name="Change Status" ref={taskType}>
             {
               BOARD_TYPES.map(
