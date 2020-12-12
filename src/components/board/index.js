@@ -33,7 +33,7 @@ const Board = ({
               />
             )
           ):
-          <h4>No Card</h4>
+          <h4 className="empty">Empty</h4>
         }
       </div>
     </div>
