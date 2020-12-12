@@ -29,7 +29,7 @@ const Card = ({
           BOARD_TYPES.filter(
             option => option.value !== boardName
           ).map(
-            option => <option value={option.value}>{`Change To ${option.title}`}</option>
+            option => <option key={option.value} value={option.value}>{`Change To ${option.title}`}</option>
           )
         }
       </select>
