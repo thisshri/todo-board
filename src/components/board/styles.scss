@@ -1,0 +1,25 @@
+.board {
+  background: #efefef;
+  min-height: 70vh;
+  border-radius: 5px;
+
+  & > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 10px;
+    height: 40px;
+
+    h5 {
+      display: inline;
+    }
+
+    span {
+      color: gray;
+    }
+  }
+
+  .card {
+    margin: 10px;
+  }
+}
