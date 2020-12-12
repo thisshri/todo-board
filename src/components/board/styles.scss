@@ -2,6 +2,7 @@
   background: #efefef;
   min-height: 70vh;
   border-radius: 5px;
+  padding-inline: 10px;
 
   & > .header {
     display: flex;
@@ -21,9 +22,10 @@
 
   .empty {
     text-align: center;
+    min-width: 260px;
   }
 
   .card {
-    margin: 10px;
+    margin-block: 10px;
   }
 }
