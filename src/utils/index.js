@@ -7,15 +7,15 @@ const BOARD_TYPE = {
 const BOARD_TYPES = [
   {
     value: BOARD_TYPE.TODO,
-    title: 'Add to Todo',
+    title: 'Todo',
   },
   {
     value: BOARD_TYPE.IN_PROGRESS,
-    title: 'Add to In Progress',
+    title: 'Progress',
   },
   {
     value: BOARD_TYPE.COMPLETE,
-    title: 'Add to Complete',
+    title: 'Complete',
   }
 ];
 
