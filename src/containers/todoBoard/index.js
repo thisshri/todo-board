@@ -10,12 +10,13 @@ import './styles.scss';
 
 const TodoBoard = () => {
   const taskType = useRef();
-  const [taskName, setTaskName] = useState(''); 
+  const [taskName, setTaskName] = useState('');
+  const [pk, setPk] = useState(0);
 
   const [DATA, setDATA] = useState(
     [
       {
-        id: 0,
+        pk: -1,
         taskTitle: 'Finish this assignment',
         boardName: BOARD_TYPE.TODO,
       },
@@ -57,10 +58,11 @@ const TodoBoard = () => {
   const handleAddTask = useCallback(
    () => {
      if (taskName) {
+      setPk(pk+1)
       const newTask = {
         taskTitle: taskName,
         boardName: taskType.current.value,
-        id: DATA.length,
+        pk: pk,
       };
 
       setTaskName('');
@@ -85,7 +87,7 @@ const TodoBoard = () => {
       <select name="Change Status" ref={taskType}>
         {
           BOARD_TYPES.map(
-            option => <option  value={option.value}>{option.title}</option>
+            (option, index) => <option key={index} value={option.value}>{option.title}</option>
           )
         }
       </select>
