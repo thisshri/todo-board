@@ -120,7 +120,7 @@ const TodoBoard = () => {
           <select name="Change Status" ref={taskType}>
             {
               BOARD_TYPES.map(
-                (option, index) => <option key={index} value={option.value}>{option.title}</option>
+                (option, index) => <option key={index} value={option.value}>{`Add to ${option.title}`}</option>
               )
             }
           </select>

@@ -24,12 +24,12 @@ const Card = ({
         </button>
       </div>
       <select data-card-pk={pk} name="Change Status" onChange={onSelectMoveCard}>
-        <option value="">Move to board</option>
+        <option value="">Change Status</option>
         {
           BOARD_TYPES.filter(
             option => option.value !== boardName
           ).map(
-            option => <option value={option.value}>{option.title}</option>
+            option => <option value={option.value}>{`Change To ${option.title}`}</option>
           )
         }
       </select>
