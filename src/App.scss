@@ -20,26 +20,22 @@ button {
   border-radius: 3px;
 }
 
-@media (min-width: 576px) {
-  #root {
+#root {
+  width: 95vw;
+
+  @media (min-width: 576px) {
     width: 90vw;
   }
-}
 
-@media (min-width: 768px) {
-  #root {
+  @media (min-width: 768px) {
     width: 90vw;
   }
-}
 
-@media (min-width: 992px) {
-  #root {
+  @media (min-width: 992px) {
     width: 85vw;
   }
-}
 
-@media (min-width: 1200px) {
-  #root {
+  @media (min-width: 1200px) {
     width: 80vw;
   }
 }
