@@ -66,10 +66,11 @@ const TodoBoard = () => {
    () => {
      if (taskName) {
       setPk(pk+1)
+      let newPk = JSON.parse(localStorage.getItem('todos')).length !== 0 ? JSON.parse(localStorage.getItem('todos')).slice(-1)[0].pk +1 : pk
       const newTask = {
         taskTitle: taskName,
         boardName: taskType.current.value,
-        pk: pk,
+        pk: newPk,
       };
 
       setTaskName('');
